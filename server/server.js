@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(
 	cors({
 		credentials: true,
-		origin: ['http://localhost:3000', 'http://192.168.1.14'],
+		origin: ['http://localhost:3000'],
 	})
 );
 app.use(cookieParser(process.env.COOKIE_SECRET, cookieOptions));
