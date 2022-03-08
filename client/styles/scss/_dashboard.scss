@@ -1,0 +1,42 @@
+.dashboard {
+	height: 20vh;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 100px;
+	border-bottom: solid rgb(131, 131, 131) 1px;
+}
+
+.user-picture {
+	background: white;
+	border-radius: 50%;
+	min-height: 100px;
+	min-width: 100px;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0px 0px 5px white;
+}
+
+.user-details {
+	padding: 10px;
+	text-align: right;
+}
+
+.user-stats {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.user-recent-activity {
+	border: solid white 1px;
+	width: 100%;
+	padding: 0 20px;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}

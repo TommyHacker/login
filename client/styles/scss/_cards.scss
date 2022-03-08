@@ -1,0 +1,24 @@
+// this is currently used for "all users" page
+.all-users-container {
+	position: absolute;
+	top: 50%;
+	left: calc(50% + 5rem);
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+.user-card {
+	display: grid;
+	grid-template-columns: 40% 40% 10% 10%;
+	text-align: left;
+	padding: 0 10px;
+	margin: 0 auto;
+	width: 800px;
+	p,
+	h4 {
+		padding: 10px;
+	}
+}
+
+.user-card:nth-child(even) {
+	background: rgb(77, 77, 77);
+}
