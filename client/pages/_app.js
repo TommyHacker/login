@@ -6,11 +6,10 @@ import Loading from '../components/Loading';
 
 const MyApp = ({ Component, pageProps }) => {
 	const [user, setUser] = useState();
-	const [userPending, setUserPending] = useState(false);
+	const [userPending, setUserPending] = useState(true);
 	const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
-		if (user) return;
+	const getUser = () => {
 		axios
 			.get('http://localhost:4000/user', { withCredentials: true })
 			.then((res) => {
@@ -20,7 +19,15 @@ const MyApp = ({ Component, pageProps }) => {
 			.catch((err) => console.log(err));
 		setUserPending(false);
 		setLoading(false);
-	}, [user, userPending, loading]);
+	};
+
+	useEffect(() => {
+		console.log('useeffect ran');
+		if (user) return;
+		if (userPending) getUser();
+		setLoading(false);
+		return setUserPending(false);
+	}, [userPending]);
 
 	return (
 		<div className='app-container'>

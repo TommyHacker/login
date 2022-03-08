@@ -20,8 +20,18 @@ const cookieOptions = {
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }));
+app.use(
+	cors({
+		credentials: true,
+		origin: ['http://localhost:3000', 'http://192.168.1.14'],
+	})
+);
 app.use(cookieParser(process.env.COOKIE_SECRET, cookieOptions));
+
+app.use((req, res, next) => {
+	console.log(req.ip);
+	next();
+});
 
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);

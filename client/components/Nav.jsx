@@ -29,13 +29,12 @@ const Nav = ({ user, setUser, loginPending }) => {
 				<>
 					<div className='user-bubble'>
 						{user.fullName.split(' ')[0][0].toUpperCase()}
-						{user.fullName.split(' ')[1][0].toUpperCase()}
 					</div>
 					<div className='nav-links'>
 						<Link href={'/dashboard'}>dashboard</Link>
 						<Link href={'/notifications'}>Notifications</Link>
 						<Link href={'/projects'}>Projects</Link>
-						<Link href={'/allUsers'}>all users</Link>
+						{user.isAdmin && <Link href={'/allUsers'}>all users</Link>}
 					</div>
 					<button className='logout-btn' onClick={() => logoutHandler()}>
 						<FontAwesomeIcon icon={faAngleRight} /> logout

@@ -5,7 +5,7 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-const Register = ({ user }) => {
+const Register = ({ user, setUserPending }) => {
 	const router = useRouter();
 	const [fullName, setFullName] = useState('');
 	const [email, setEmail] = useState('');
@@ -21,14 +21,18 @@ const Register = ({ user }) => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 		axios
-			.post('http://localhost:4000/user/register', {
-				fullName,
-				email,
-				password,
-			})
-			.then((res) => console.log(res))
+			.post(
+				'http://localhost:4000/user/register',
+				{
+					fullName,
+					email,
+					password,
+				},
+				{ withCredentials: true }
+			)
+			.then((res) => setUserPending(true))
 			.catch((err) => console.log(err));
-		getUser();
+
 		return router.replace('/');
 	};
 
